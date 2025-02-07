@@ -55,14 +55,16 @@ const app = new Elysia()
       await prisma.survey.create({
         data: {
           title: body.title,
-          description: body.description
+          description: body.description,
+          question: body.question
         }
       })
     }
   }, {
     body: t.Object({
       title: t.String(),
-      description: t.String()
+      description: t.String(),
+      question: t.String()
     })
   })
   .put('/survey/:id', async({ body, params }) => {

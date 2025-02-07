@@ -5,15 +5,17 @@ async function main() {
     data: {
         id: '88006ba6-1378-4832-9970-1a7e62397084', 
         title: 'some survey title 1',
-        description: 'some survey desc 1'
+        description: 'some survey desc 1',
+        question: 'what is your name'
     },
   })
 
   const survey2 = await prisma.survey.create({
     data: {
         id: '15273f79-d70f-4c4d-938d-98db9bd3f4e1',
-        title: 'butthole',
-        description: 'hello description'
+        title: 'test123',
+        description: 'hello description',
+        question: 'what is your occupation'
     },
   })
 

@@ -24,6 +24,7 @@
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
     "autoprefixer": "^10.4.20",
+    "daisyui": "^5.0.0-beta.7",
     "elysia": "^1.2.12",
     "postcss": "^8.5.1",
     "react-router-devtools": "^1.1.0",

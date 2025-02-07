@@ -1,6 +1,6 @@
 import type { Route } from "./+types/home";
 import { SurveyListView } from "../components/SurveyListView/SurveyListView";
-import apiClient from "../../client"
+import apiClient from "client"
 import { useLoaderData } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
