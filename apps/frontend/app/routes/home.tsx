@@ -1,13 +1,23 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { SurveyListView } from "../components/SurveyListView/SurveyListView";
+import apiClient from "../../client"
+import { useLoaderData } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Survey App" },
+    { name: "description", content: "A full-stack survey app" },
   ];
 }
 
+export async function loader({ params }: Route.LoaderArgs) {
+  const surveys = await apiClient.surveys.get();
+  return surveys;
+}
+
 export default function Home() {
-  return <Welcome />;
+  const surveys = useLoaderData<typeof loader>()
+  console.log(surveys)
+
+  return <SurveyListView surveys={surveys?.data} />;
 }
