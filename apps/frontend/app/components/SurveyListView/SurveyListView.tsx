@@ -15,13 +15,15 @@ export const SurveyListView: React.FC<SurveyListViewProps> = ({ surveys }) => {
       <div className='mb-8 w-full'>
         <h1 className="text-6xl font-semibold">Survey App</h1>
       </div>
-      <button onClick={() => setEditMode(true)} className={`${editMode && 'hidden'} btn btn-success w-full mb-8`}>
+      <button onClick={() => setEditMode(true)} className={`${editMode && 'hidden'} btn btn-primary w-full mb-8`}>
           New Survey +
       </button>
       <SurveyEditMode editing={editMode} handleSetEditMode={handleSetEditMode} />
       <div className='flex flex-col gap-4'>
         <h2 className='text-3xl font-bold'>All surveys</h2>
-        {surveys.map((survey) => <Survey id={survey.id} title={survey.title} description={survey.description} question={survey.question} />)}
+        {surveys.map((survey) => {
+            return <Survey id={survey.id} title={survey.title} description={survey.description} question={survey.question} />
+        })}
       </div>
     </main>
   );
