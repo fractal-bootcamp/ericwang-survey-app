@@ -16,8 +16,11 @@ const app = new Elysia()
     return allAnswers
   })
   .get('/survey/:id', async ({ params }) => {
-    const allSurveys = await prisma.survey.findMany()
-    return allSurveys.find((survey) => survey.id === params.id)
+    await prisma.survey.findUnique({
+      where: {
+        id: params.id
+      }
+    })
   }, {
     params: t.Object({
       id: t.String()
@@ -52,14 +55,16 @@ const app = new Elysia()
       await prisma.survey.create({
         data: {
           title: body.title,
-          description: body.description
+          description: body.description,
+          question: body.question
         }
       })
     }
   }, {
     body: t.Object({
       title: t.String(),
-      description: t.String()
+      description: t.String(),
+      question: t.String()
     })
   })
   .put('/survey/:id', async({ body, params }) => {
@@ -86,3 +91,5 @@ const app = new Elysia()
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
 );
+
+export type App = typeof app
