@@ -10,6 +10,12 @@ export type SurveyListViewProps = {
 }
 
 export type SurveyEditModeProps = {
-    editing: boolean,
-    handleSetEditMode: (bool:boolean) => void
+    editing: string,
+    handleSetEditMode: (mode:strings) => void
 }
+
+export enum CREATE_EDIT_MODES {
+    DEFAULT="Default",
+    CREATE="Create",
+    EDIT="Edit"
+  }

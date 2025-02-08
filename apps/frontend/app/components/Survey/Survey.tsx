@@ -45,7 +45,7 @@ export const Survey: React.FC<SurveyProps> = ({ id, title, description, question
           <input required onChange={(e) => setContent(e.target.value)} className='input bg-white w-full border-slate-200' />
         </div>
       )
-      break;
+      break
     case MODES.RESULTS:
       modeComponent = (
         <div className='flex flex-col w-full'>
@@ -64,7 +64,7 @@ export const Survey: React.FC<SurveyProps> = ({ id, title, description, question
           </div>
         </div>
       )
-    
+      break
   }
 
   return (

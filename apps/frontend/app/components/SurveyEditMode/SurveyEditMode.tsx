@@ -1,9 +1,11 @@
 import { type SurveyEditModeProps } from '../../types'
 import { useState } from 'react'
+import { CREATE_EDIT_MODES } from '../../types'
 import apiClient from 'client'
 
 
 export const SurveyEditMode: React.FC<SurveyEditModeProps> = ({ editing, handleSetEditMode }) => {
+  const [mode, setMode] = useState()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [question, setQuestion] = useState('')
@@ -18,7 +20,7 @@ export const SurveyEditMode: React.FC<SurveyEditModeProps> = ({ editing, handleS
   }
 
   return (
-    <div className={`${!editing && 'hidden'} p-4 border border-slate-500 rounded-xl flex flex-col gap-4 bg-slate-100 text-black mb-8`}>
+    <div className={`${editing !== CREATE_EDIT_MODES.EDIT && 'hidden'} p-4 border border-slate-500 rounded-xl flex flex-col gap-4 bg-slate-100 text-black mb-8`}>
       <div className='flex flex-col gap-2'>
         <h2 className='text-xl font-bold'>Title</h2>
         <input 
