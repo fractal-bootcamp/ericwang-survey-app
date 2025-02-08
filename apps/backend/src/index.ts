@@ -93,10 +93,10 @@ const app = new Elysia()
       where: { id: params.id}
     })
   })
-  .listen(3000);
+  .listen(process.env.PORT ?? 3000);
 
 console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+  `🦊 Elysia is running at http://${app.server?.hostname}:${app.server?.port}`
 );
 
 export type App = typeof app
