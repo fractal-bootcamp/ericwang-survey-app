@@ -2,7 +2,7 @@ export type SurveyProps = {
     id: string,
     title: string,
     description: string,
-    question: string
+    question: string,
 }
 
 export type SurveyListViewProps = {

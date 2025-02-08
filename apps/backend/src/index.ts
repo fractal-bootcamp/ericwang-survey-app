@@ -26,9 +26,11 @@ const app = new Elysia()
       id: t.String()
     })
   })
-  .get('/survey/:id/results', async ({ params }) => {
-    const allSurveys = await prisma.answer.findMany()
-    return allSurveys.find((answer) => answer.surveyId === params.id)
+  .get('/survey/:id/results', async ({ params }) => {    
+    return await prisma.answer.findMany({
+      where: { surveyId: params.id }
+    })
+
   },{
     params: t.Object({
       id: t.String()
@@ -84,6 +86,11 @@ const app = new Elysia()
     }),
     params: t.Object({
       id: t.String()
+    })
+  })
+  .delete('/survey/:id', async({ params}) => {
+    await prisma.survey.delete({
+      where: { id: params.id}
     })
   })
   .listen(3000);
